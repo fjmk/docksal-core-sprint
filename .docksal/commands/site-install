@@ -98,7 +98,18 @@ site_install ()
 {
 	cd ${DOCROOT_PATH}
 
-	drupal site-install -y --site-name='My Drupal 8 Site'
+	# DrupalConsole is needed in $DOCROOT_PATH
+	composer require drupal/console:~1.0
+
+	drupal site:install -y standard \
+		--langcode="en" \
+		--site-name='My Drupal 8 Site' \
+		--site-mail="admin@example.com"  \
+		--account-name="admin" \
+		--account-pass="password" \
+		--account-mail="admin@example.com"  \ 
+		--force \ # Force to reinstall the site
+		--no-interaction
 }
 
 #-------------------------- END: Functions --------------------------------
