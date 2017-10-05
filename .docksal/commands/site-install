@@ -46,6 +46,8 @@ copy_settings_file()
 init_docroot ()
 {
 	cd ${PROJECT_ROOT}
+	# make sure $DOCROOT_PATH exists
+	mkdir -p ${DOCROOT}
 
 	if [ -e ${DOCROOT}/index.php ]
 		then
