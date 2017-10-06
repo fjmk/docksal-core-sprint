@@ -4,6 +4,8 @@ services:
   adminer:
     hostname: adminer
     image: adminer
+    volumes:
+      - ${PROJECT_ROOT}/.adminer/index.php:/var/www/html/index.php:ro
     labels:
       - io.docksal.virtual-host=db.${VIRTUAL_HOST}
   cloud9:
